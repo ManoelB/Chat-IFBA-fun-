@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat teste</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        #chat-container {
+            width: 80%;
+            margin: 20px auto;
+            background: #4CAF50;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        #chat-header {
+            text-align: center;
+            background: linear-gradient(45deg, #4CAF50, #2E7D32);
+            color: #fff;
+            padding: 10px 0;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        .message {
+            margin: 10px;
+            padding: 10px;
+            border-radius: 10px;
+            display: inline-block;
+            max-width: 70%;
+        }
+        .received {
+            background: #E0F2F1;
+            text-align: left;
+            border: 1px solid #81C784;
+        }
+        .sent {
+            background: #4CAF50;
+            color: #fff;
+            text-align: right;
+            border: 1px solid #388E3C;
+        }
+        .message-content {
+            font-size: 16px;
+        }
+        #chat-input {
+            margin-top: 20px;
+            padding: 0 10px;
+            display: flex;
+        }
+        #message-input {
+            width: 80%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        #send-button {
+            background: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body> 
+    <a href="https://www.chatifba.com">Chat Ifba</a>
+
+    <div id="chat-container">
+        <div id="chat-header">
+            <h1>Chat teste ifba</h1>
+        </div>
+        <div id="chat-messages">
+        </div>
+        <div id="chat-input">
+            <input type="text" id="message-input" placeholder="Digite sua mensagem">
+            <button id="send-button">Enviar</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("send-button").addEventListener("click", function() {
+            var messageInput = document.getElementById("message-input");
+            var message = messageInput.value;
+            if (message) {
+                var messageContainer = document.createElement("div");
+                messageContainer.classList.add("message", "sent");
+                var messageContent = document.createElement("div");
+                messageContent.classList.add("message-content");
+                messageContent.innerText = message;
+                messageContainer.appendChild(messageContent);
+                document.getElementById("chat-messages").appendChild(messageContainer);
+                messageInput.value = "";
+
+                var randomResponses = [
+                    "Luan não gosta disso",
+                    "Beatriz desaprova",
+                    "Não!",
+                    "Sim!",
+                    "Talvez!",
+                    "Com certeza!",
+                    "Absolutamente não!",
+                    "ar-condicionado indiano",
+                    "Você é calvo",
+                    "Kayky aprova isso",
+                    "Hellen não iria gostar de saber disso",
+                    "Sei lá!",
+                    "Yuri vai te cancelar",
+                    "Antônio acha isso hilário!",
+                    "Breno está rindo muito disso",
+                    "Noel não acredita",
+                    "Caio está surpreso",
+                    "Daniel está confuso",
+                    "Kauan quer saber mais",
+                    "Suellen acha genial",
+                    "Joseph ficou sem palavras",
+                    "Antônio disse que você é demais!"
+                ];
+
+                var randomResponse = randomResponses[Math.floor(Math.random() * randomResponses.length)];
+                setTimeout(function() {
+                    var responseContainer = document.createElement("div");
+                    responseContainer.classList.add("message", "received");
+                    var responseContent = document.createElement("div");
+                    responseContent.classList.add("message-content");
+                    responseContent.innerText = randomResponse;
+                    responseContainer.appendChild(responseContent);
+                    document.getElementById("chat-messages").appendChild(responseContainer);
+                }, 1000); 
+            }
+        });
+    </script>
+</body>
+</html>
